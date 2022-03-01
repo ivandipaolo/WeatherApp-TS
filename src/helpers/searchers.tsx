@@ -1,4 +1,5 @@
 import axios from "axios";
+import moment from "moment";
 import { place } from "../interfaces/components/PlacesInterface";
 
 const paramsMapbox = {
@@ -7,14 +8,12 @@ const paramsMapbox = {
     'language': 'en'
 }
 
-
-const paramsCurrentWeather = {
-    'key': process.env.REACT_APP_WEATHERAPI_KEY,
-    'days': 7
+const headersAmbee = {
+    'x-api-key': process.env.REACT_APP_AMBEE_KEY!,
+    'Content-type': 'application/json'
 }
 
-
-export const findCity = async (place:string = '') => {
+export const findCity = async (place: string = '') => {
     try {
         const resp = await axios.get(
             `https://api.mapbox.com/geocoding/v5/mapbox.places/${place}.json`,
@@ -26,61 +25,48 @@ export const findCity = async (place:string = '') => {
             lng: place.center[0],
             lat: place.center[1],
         }));
-        getWeatherWeek(array[0].lat,array[0].lng)
         return array;
-        // getCurrentWeather(array[0].lat,array[0].lng)
-        // getWeatherTwoDays(array[0].lat,array[0].lng)
     } catch (error) {
         return [];
     }
 }
 
-
-export const getCurrentWeather = async (lat: number, lon: number) => {
-
-    try {
-        const resp = await axios.get(
-            `http://api.weatherapi.com/v1/current.json`,
-            { params: { ...paramsCurrentWeather, 'q': (lat + ',' + lon) } }
-        )
-
-        // console.log(resp.data.current)
-
-    } catch (error) {
-        console.log(error);
-    }
-
-}
-
 export const getWeatherWeek = async (lat: number, lon: number) => {
-
+    const today = new Date()
+    let from = moment(today.setDate(today.getDate())).format('YYYY-MM-DD HH:MM:SS');
+    let to = moment(today.setDate(today.getDate() + 7)).format('YYYY-MM-DD HH:MM:SS');
     try {
         const resp = await axios.get(
-            `http://api.weatherapi.com/v1/forecast.json`,
-            { params: { ...paramsCurrentWeather, 'q': (lat + ',' + lon) } }
+            `https://api.ambeedata.com/weather/forecast/by-lat-lng`,
+            {
+                params: { lat, 'lng': lon, 'filter': 'daily', from, to },
+                headers: {
+                    ...headersAmbee
+                }
+            }
         )
-
-        console.log(resp.data)
-
+        console.log(resp)
     } catch (error) {
         console.log(error);
     }
-
 }
 
 export const getWeatherTwoDays = async (lat: number, lon: number) => {
-
+    const today = new Date()
+    let from = moment(today.setDate(today.getDate())).format('YYYY-MM-DD HH:MM:SS');
+    let to = moment(today.setDate(today.getDate() + 2)).format('YYYY-MM-DD HH:MM:SS');
     try {
         const resp = await axios.get(
-            `http://api.weatherapi.com/v1/forecast.json`,
-            { params: { ...paramsCurrentWeather, 'q': (lat + ',' + lon), 'days': 2 } }
+            `https://api.ambeedata.com/weather/forecast/by-lat-lng`,
+            {
+                params: { lat, 'lng': lon, 'filter': 'hourly', from, to },
+                headers: {
+                    ...headersAmbee
+                }
+            }
         )
-
-        console.log(resp.data.forecast.forecastday[0].hour)
-        console.log(resp.data.forecast.forecastday[1].hour)
-
+        console.log(resp)
     } catch (error) {
         console.log(error);
     }
-
 }
