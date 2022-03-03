@@ -8,10 +8,10 @@ export const Home = () => {
     return (
         <StyledHome>
             <SearchBox />
-            {/* <hr />
-            <CurrentWeather/>
-            <ForecastTwoDays/>
-            <ForecastWeek/> */}
+            <hr />
+            <CurrentWeather />
+            {/* <ForecastTwoDays/>
+            <ForecastWeek/>  */}
         </StyledHome>
     )
 }
