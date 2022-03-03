@@ -1,4 +1,4 @@
-import { Types } from '../../types/types';
+import { Types } from '../types/types';
 
 export const setThemeMode = (data: string) => ({
   type: Types.setThemeMode,

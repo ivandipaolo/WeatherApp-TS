@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import { PlaceInterface } from '../../interfaces/redux/SelectedPlaceInterface';
+import { PlaceInterface } from '../../interfaces/redux/PlaceInterface';
 import {
     ActionType,
     Types

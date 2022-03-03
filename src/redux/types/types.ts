@@ -12,7 +12,13 @@ export enum Types {
   /*
    *  SelectedPlaceInteface
    */
-  setSelectedPlace = '[Pl] Set selected place'
+  setSelectedPlace = '[Pl] Set selected place',
+  /*
+   *  WeatherInterface
+   */
+  setCurrentWeather = '[WT] Set current weather',
+  setTwoDaysWeather = '[WT] Set two days weather',
+  setWeekWeather = '[WT] Set week weather',
 }
 
 export enum ThemeModes {

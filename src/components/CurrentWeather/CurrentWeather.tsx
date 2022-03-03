@@ -1,10 +1,10 @@
-import React from 'react'
+
 import { StyledCurrentWeather } from './StyledCurrentWeather';
 
-export const CurrentWeather = () => {
+export const CurrentWeather: React.FC = () => {
   return (
     <StyledCurrentWeather>
-        <p>CurrentWeather</p>
+      <p>Current</p>
     </StyledCurrentWeather>
   )
 }

@@ -1,64 +1,68 @@
 import axios from "axios";
 import moment from "moment";
+import { Current, Week } from '../interfaces/redux/WeatherInterface';
 
-const headersAmbee = {
-    'x-api-key': process.env.REACT_APP_AMBEE_KEY!,
-    'Content-type': 'application/json'
+const paramsOpenWeather = {
+    'appid': process.env.REACT_APP_OPENWEATHER_KEY
 }
 
-
-export const getWeatherCurrent = async (lat: number, lon: number) => {
+export const getWeather = async (lat: number, lon: number) => {
     try {
         const resp = await axios.get(
-            `https://api.ambeedata.com/weather/latest/by-lat-lng`,
+            `https://api.openweathermap.org/data/2.5/onecall`,
             {
-                params: { lat, 'lng': lon},
-                headers: {
-                    ...headersAmbee
-                }
+                params: { ...paramsOpenWeather, lat, lon, minutely: ['minutely', 'alerts'] }
             }
         )
-        console.log(resp)
-    } catch (error) {
-        console.log(error);
-    }
-}
 
-export const getWeatherTwoDays = async (lat: number, lon: number) => {
-    const today = new Date()
-    let from = moment(today.setDate(today.getDate())).format('YYYY-MM-DD HH:MM:SS');
-    let to = moment(today.setDate(today.getDate() + 2)).format('YYYY-MM-DD HH:MM:SS');
-    try {
-        const resp = await axios.get(
-            `https://api.ambeedata.com/weather/forecast/by-lat-lng`,
-            {
-                params: { lat, 'lng': lon, 'filter': 'hourly', from, to },
-                headers: {
-                    ...headersAmbee
-                }
-            }
-        )
-        console.log(resp)
-    } catch (error) {
-        console.log(error);
-    }
-}
+        const {
+            current: {
+                feels_like: feelsLike,
+                humidity,
+                temp,
+                weather: [
+                    {
+                        description,
+                        icon,
+                        main
+                    }
+                ]
+            },
+            daily,
+            hourly
+        } = resp.data;
+        
+        const current: Current = {
+            feelsLike,
+            humidity,
+            temp,
+            description,
+            icon,
+            main
+        };
 
-export const getWeatherWeek = async (lat: number, lon: number) => {
-    const today = new Date()
-    let from = moment(today.setDate(today.getDate())).format('YYYY-MM-DD HH:MM:SS');
-    let to = moment(today.setDate(today.getDate() + 7)).format('YYYY-MM-DD HH:MM:SS');
-    try {
-        const resp = await axios.get(
-            `https://api.ambeedata.com/weather/forecast/by-lat-lng`,
-            {
-                params: { lat, 'lng': lon, 'filter': 'daily', from, to },
-                headers: {
-                    ...headersAmbee
-                }
-            }
-        )
-        console.log(resp)
+        const week: Week = daily.map((day: { feels_like: { day: number; }; temp: { min: number; max: number; }; weather: { description: string; icon: string; main: string; }[]; }) => ({
+            feelsLike: day.feels_like.day,
+            tempMin: day.temp.min,
+            tempMax: day.temp.max,
+            description: day.weather[0].description,
+            icon: day.weather[0].icon,
+            main: day.weather[0].main,
+        }))
+
+        const twoDays = hourly.map((hour: { feels_like: number; temp: number; weather: { description: string; icon: string; main: string; }[]; }) => ({
+            feelsLike: hour.feels_like,
+            temp: hour.temp,
+            description: hour.weather[0].description,
+            icon: hour.weather[0].icon,
+            main: hour.weather[0].main,
+        }))
+
+        return ({
+            current,
+            week,
+            twoDays
+        })
     } catch (error) {
         console.log(error);
     }
