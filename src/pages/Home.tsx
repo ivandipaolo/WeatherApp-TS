@@ -20,8 +20,8 @@ export const Home = () => {
                 &&
                 <>
                     <CurrentWeather/>
-                    {/* <ForecastTwoDays/>
-                <ForecastWeek/>  */}
+                    <ForecastTwoDays/>
+                {/* <ForecastWeek/>  */}
                 </>
             }
 

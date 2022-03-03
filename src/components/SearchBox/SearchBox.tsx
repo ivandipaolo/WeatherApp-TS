@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
 import { findCity } from '../../helpers/placeSearcher';
-// import { getWeatherTwoDays } from '../../helpers/weatherSearcher';
 import { place } from '../../interfaces/components/PlacesInterface';
 import { StyledSearchBox, StyledInput, StyledSuggestions } from './StyledSearchBox';
 import { IoSearchOutline } from 'react-icons/io5';
@@ -18,12 +17,7 @@ export const SearchBox = () => {
   const [showSuggestions, setShowSuggestions] = useState<boolean>(false)
   
   useEffect(() => {
-    selectedPlace.name !== '' &&
-      setSearch(selectedPlace.name)
-  }, [selectedPlace])
-
-  useEffect(() => {
-    if (search !== '') {
+    if (search.trim() !== '' && selectedPlace) {
       setShowSuggestions(true)
       const timer = setTimeout(async () => {
         let places: place[] = await findCity(search)
@@ -34,19 +28,20 @@ export const SearchBox = () => {
       setSearch('')
     }
   }, [search])
-
-  const onBlur = () => {
-    setTimeout(() => {
-      setFocusedInput(false)
-      setShowSuggestions(false)
-    }, 300);
-  }
-
+  
+    useEffect(() => {
+      if (selectedPlace.name !== '') {
+        setFocusedInput(false)
+        setShowSuggestions(false)
+        setSearch('')
+      }
+    }, [selectedPlace])
+    
   const onClick = (e: any) => {
     if (!focusedInput) {
+      setSearch('')
       setFocusedInput(true)
       setSuggestions([]);
-      setSearch(e.target.innerText);
     }
   };
 
@@ -59,10 +54,8 @@ export const SearchBox = () => {
           name='search'
           onClick={e => onClick(e)}
           onChange={e => setSearch(e.target.value)}
-          // onChange={e => getSuggestions(e.target.value)}
-          onBlur={onBlur}
           autoComplete="off"
-          placeholder='Search for a place here'
+          placeholder={selectedPlace.name !== '' ? selectedPlace.name : 'Search for a place here'}
         />
         <IoSearchOutline id="searchIcon" size={40} color='black' />
       </StyledInput>
