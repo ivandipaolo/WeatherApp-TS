@@ -12,27 +12,27 @@ export default {
         },
 
         background: {
-            color: '#141a32'
+            color: '#000'
         },
 
         border: {
-            color: '#5a6583'
+            color: '#fff'
         },
 
         button: {
-            color: '#5a6583'
+            color: '#182368'
         },
 
         typography: {
-            color: '#809cf5'
+            color: '#0A28E5'
         },
 
         underline: {
-            color: '#5a6583'
+            color: '#ACB6F2'
         },
 
         inputs: {
-            color: '#5a6583'
+            color: '#ADADAD'
         }
     },
 

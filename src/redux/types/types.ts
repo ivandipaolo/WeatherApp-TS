@@ -4,11 +4,15 @@ export type ActionType = {
 };
 
 export enum Types {
-  /**
+  /*
    *  UiInterface
    */
   setThemeMode = '[UI] Set theme mode',
-  setTemperatureUnit = '[UI] Set temperature unit'
+  setTemperatureUnit = '[UI] Set temperature unit',
+  /*
+   *  SelectedPlaceInteface
+   */
+  setSelectedPlace = '[Pl] Set selected place'
 }
 
 export enum ThemeModes {

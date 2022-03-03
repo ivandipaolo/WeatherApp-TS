@@ -1,37 +1,68 @@
-import { useEffect, useState } from 'react';
-import { findCity, getWeatherWeek, getWeatherTwoDays } from '../../helpers/searchers';
+import { useState } from 'react';
+import { findCity } from '../../helpers/placeSearcher';
+// import { getWeatherTwoDays } from '../../helpers/weatherSearcher';
 import { place } from '../../interfaces/components/PlacesInterface';
-
-
+import { StyledSearchBox, StyledInput, StyledSuggestions } from './StyledSearchBox';
+import { IoSearchOutline } from 'react-icons/io5';
+import Suggestion from './Suggestion';
 
 export const SearchBox = () => {
 
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState<string>('')
   const [suggestions, setSuggestions] = useState<place[]>([])
+  const [focusedInput, setFocusedInput] = useState<boolean>(false)
+  const [showSuggestions, setShowSuggestions] = useState<boolean>(false)
 
   const getSuggestions = async (place: string) => {
-    setSearch(place)
     if (place !== '') {
-      let places: place[] = await findCity(search)
+      setShowSuggestions(true)
+      let places: place[] = await findCity(place)
       setSuggestions(places)
+      setSearch(place)
     };
   }
 
-  const handleSearch = (lat:number, lng:number) => {
-    getWeatherTwoDays(lat,lng);
+  const onBlur = () => {
+    setTimeout(() => {
+      setFocusedInput(false)
+      setShowSuggestions(false)
+    }, 100);
   }
 
+  const onClick = (e: any) => {
+    if (!focusedInput) {
+      setFocusedInput(true)
+      setSuggestions([]);
+      setSearch(e.target.innerText);
+    }
+  };
+
   return (
-    <>
-      <input type='text' value={search} name='search' onChange={e => getSuggestions(e.target.value)} autoComplete='false' />
-      {
-        suggestions.map(sug => (
-          <>
-            <p key={sug.id}>{sug.name}</p>
-            <button type="button" onClick={() => handleSearch(sug.lat, sug.lng)}>Buscar</button>
-          </>
-        ))
+    <StyledSearchBox>
+      <StyledInput>
+        <input
+          type='text'
+          value={search}
+          name='search'
+          onClick={e => onClick(e)}
+          onChange={e => getSuggestions(e.target.value)}
+          onBlur={onBlur}
+          autoComplete="off"
+        />
+        <IoSearchOutline id="searchIcon" />
+      </StyledInput>
+      {showSuggestions &&
+        <StyledSuggestions>
+          {
+            suggestions.map((sugg) => (
+              <Suggestion
+                key={sugg.id}
+                suggestion={sugg}
+              />
+            ))
+          }
+        </StyledSuggestions>
       }
-    </>
+    </StyledSearchBox>
   )
 }

@@ -1,15 +1,17 @@
-## Prueba Meteologica - React + TS
+## WeatherApp - React + TS
 
 ### Principales tecnologías utilizadas:
 1. React como 'framework' de JS + TypeScript.
 2. Styled-Components para estilado general.
 3. Axios para el fetch de la data.
+4. MomentJs para el formateo de fechas.
+5. React-icons para la inclusión de iconos.
 
 ## APIs utilizadas:
 
 [MapBox - Geolocalización](https://www.mapbox.com/)
 
-[WeatherApi - Climas](https://www.weatherapi.com/)
+[Ambee - Climas](https://www.getambee.com/)
 
 ## Modo de ejecución:
 ```
