@@ -3,10 +3,10 @@ import styled from "styled-components";
 export const StyledHome = styled.div`
     display: flex;
     flex-direction: column;
-    margin: 5vh 20vh 5vh 20vh;
+    margin: 5vh 10vh 5vh 10vh;
     height: 90vh;
-    background: rgba( 255, 255, 255, 0.15 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    background: rgba( 255, 255, 255, 0 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.1 );
     backdrop-filter: blur( 14.5px );
     -webkit-backdrop-filter: blur( 14.5px );
     border-radius: 10px;

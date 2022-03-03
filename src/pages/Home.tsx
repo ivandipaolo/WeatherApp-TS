@@ -14,11 +14,11 @@ export const Home = () => {
     return (
         <StyledHome>
             <SearchBox />
+            <hr />
             {
                 selectedPlace.name !== ''
                 &&
                 <>
-                    <hr />
                     <CurrentWeather/>
                     {/* <ForecastTwoDays/>
                 <ForecastWeek/>  */}
