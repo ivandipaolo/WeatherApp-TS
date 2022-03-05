@@ -1,9 +1,10 @@
+/* eslint import/no-anonymous-default-export: [2, {"allowObject": true}] */
 export default {
     title: 'DARK',
 
     fonts: {
-        primary: 'Roboto',
-        secondary: 'Raleway',
+        primary:'Montserrat',
+        secondary: 'Montserrat Alternates',
     },
 
     colors: {

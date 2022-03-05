@@ -1,13 +1,20 @@
-import { FaArrowDown, FaArrowUp } from 'react-icons/fa';
-import { StyledForecastedHour } from './StyledForecastTwoDays';
-import { TwoDays } from '../../interfaces/redux/WeatherInterface';
+import { FC } from 'react';
 
-export const ForecastedHour = ({ hour }: any) => {
+import { StyledForecastedHour } from './StyledForecastTwoDays';
+import { ITwoDaysMapped } from '../../interfaces/redux/WeatherInterface';
+import { kelvinToCelcius } from '../../helpers/unitConvertion';
+import dayjs from 'dayjs';
+
+interface Props {
+    hour: ITwoDaysMapped
+}
+
+export const ForecastedHour: FC<Props> = ({ hour }) => {
+    const date = dayjs.unix(hour.dt)
     return (
         <StyledForecastedHour>
-            <FaArrowDown id="arrowMin" size={15} color='white' />
-            <FaArrowUp id="arrowMax" size={15} color='white' />
-            <p>{hour.feelsLike}</p>
+            <p>{date.format('HH')}</p>
+            <p>{kelvinToCelcius(hour.feelsLike)}</p>
         </StyledForecastedHour>
     )
 }

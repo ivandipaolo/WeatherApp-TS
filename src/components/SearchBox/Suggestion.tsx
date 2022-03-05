@@ -1,16 +1,17 @@
 import { StyledSuggestion } from './StyledSearchBox';
-import { place } from '../../interfaces/components/PlacesInterface';
+import { IPlaceMapped } from '../../interfaces/components/PlacesInterface';
 import { useDispatch } from 'react-redux';
 import { getWeather } from '../../helpers/weatherSearcher';
 import { setSelectedPlace } from '../../redux/actions/placeActions';
 import { setCurrentWeather, setWeekWeather, setTwoDaysWeather } from '../../redux/actions/weatherActions';
+import { MutableRefObject } from 'react';
 
-interface eachSuggestion {
-    suggestion: place;
+interface Props {
+    suggestion: IPlaceMapped;
+    ref?: MutableRefObject<any>;
 }
 
-const Suggestion: React.FC<eachSuggestion> = ({ suggestion }) => {
-
+const Suggestion: React.FC<Props> = ({ suggestion }) => {
     const dispatch = useDispatch();
     const { lat, lng } = suggestion;
 

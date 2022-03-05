@@ -10,19 +10,10 @@ export const StyledSearchBox = styled.div`
 export const StyledInput = styled.div`
   display: flex;
   justify-content: center;
+  align-items:center ;
   width: 50vw;
   min-width: 50vw;
   margin: 2rem;
-  #searchIcon{
-    position: absolute;
-    z-index: 1;
-    right: 23%;
-    top: 2.2rem;
-  }
-  input{
-    width: 100%;
-    padding: .7rem;
-    font-size: 1.3rem;
     border-width: 1px;
     border-color: #CCCCCC;
     background-color: #FFFFFF;
@@ -30,6 +21,17 @@ export const StyledInput = styled.div`
     border-style: solid;
     border-radius: 4px;
     box-shadow: 0px 0px 7px rgba(66,66,66,.75);
+  #searchIcon{
+    position: absolute;
+    z-index: 1;
+    left: 23%;
+    top: 2.5rem;
+  }
+  input{
+    width: 100%;
+    padding: .7rem;
+    padding-left: 3.5rem;
+    font-size: 1.3rem;
   }
 `
 

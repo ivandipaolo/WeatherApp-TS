@@ -1,5 +1,5 @@
-import { place } from "../components/PlacesInterface";
+import { IPlaceMapped } from "../components/PlacesInterface";
 
 export interface PlaceInterface {
-    selectedPlace: place;
+    selectedPlace: IPlaceMapped;
 }

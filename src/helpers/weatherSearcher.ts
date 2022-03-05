@@ -1,6 +1,5 @@
 import axios from "axios";
-import moment from "moment";
-import { Current, Week } from '../interfaces/redux/WeatherInterface';
+import { IWeatherResponse, ICurrentMapped, ITwoDays, ITwoDaysMapped, IWeek, IWeekMapped } from '../interfaces/redux/WeatherInterface';
 
 const paramsOpenWeather = {
     'appid': process.env.REACT_APP_OPENWEATHER_KEY
@@ -14,48 +13,55 @@ export const getWeather = async (lat: number, lon: number) => {
                 params: { ...paramsOpenWeather, lat, lon, minutely: ['minutely', 'alerts'] }
             }
         )
-
         const {
             current: {
+                dt,
                 feels_like: feelsLike,
                 humidity,
                 temp,
                 weather: [
                     {
                         description,
-                        icon,
-                        main
+                        id,
+                        main,
+                        icon
                     }
                 ]
             },
             daily,
             hourly
-        } = resp.data;
-        
-        const current: Current = {
+        }: IWeatherResponse = resp.data;
+
+        const current: ICurrentMapped = {
+            dt,
             feelsLike,
             humidity,
             temp,
             description,
-            icon,
-            main
+            id,
+            main,
+            icon
         };
 
-        const week: Week = daily.map((day: { feels_like: { day: number; }; temp: { min: number; max: number; }; weather: { description: string; icon: string; main: string; }[]; }) => ({
+        const week: IWeekMapped[] = daily.map((day: IWeek) => ({
+            dt: day.dt,
             feelsLike: day.feels_like.day,
             tempMin: day.temp.min,
             tempMax: day.temp.max,
             description: day.weather[0].description,
-            icon: day.weather[0].icon,
+            id: day.weather[0].id,
             main: day.weather[0].main,
+            icon: day.weather[0].icon
         }))
 
-        const twoDays = hourly.map((hour: { feels_like: number; temp: number; weather: { description: string; icon: string; main: string; }[]; }) => ({
+        const twoDays: ITwoDaysMapped[] = hourly.map((hour: ITwoDays) => ({
+            dt: hour.dt,
             feelsLike: hour.feels_like,
             temp: hour.temp,
             description: hour.weather[0].description,
-            icon: hour.weather[0].icon,
+            id: hour.weather[0].id,
             main: hour.weather[0].main,
+            icon: hour.weather[0].icon
         }))
 
         return ({

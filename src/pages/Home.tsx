@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { CurrentWeather } from "../components/CurrentWeather/CurrentWeather"
 import { ForecastTwoDays } from "../components/ForecastTwoDays/ForecastTwoDays"
 import { ForecastWeek } from "../components/ForecastWeek/ForecastWeek"
@@ -10,7 +9,6 @@ import { RootState } from "../redux/store/store"
 export const Home = () => {
     const { selectedPlace } = useSelector((state: RootState) => state.placeInterface)
 
-
     return (
         <StyledHome>
             <SearchBox />
@@ -19,9 +17,9 @@ export const Home = () => {
                 selectedPlace.name !== ''
                 &&
                 <>
-                    <CurrentWeather/>
-                    <ForecastTwoDays/>
-                {/* <ForecastWeek/>  */}
+                    <CurrentWeather />
+                    <ForecastTwoDays />
+                    <ForecastWeek />
                 </>
             }
 

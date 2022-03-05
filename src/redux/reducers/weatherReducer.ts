@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import { WeatherInterface, TwoDays } from '../../interfaces/redux/WeatherInterface';
+import { WeatherInterface } from '../../interfaces/redux/WeatherInterface';
 import {
     ActionType,
     Types
@@ -8,28 +8,33 @@ import {
 const initialState: WeatherInterface = {
 
     current: {
+        dt: 0,
         feelsLike: 0,
         humidity: 0,
         temp: 0,
         description: "",
-        icon: "",
+        id: 0,
         main: "",
+        icon: ''
     },
     twoDays: [{
-        apparentTemperature: 0,
-        precipProbability: 0,
-        summary: "",
-        temperature: 0,
-        windSpeed: 0,
-        time: 0,
+        dt: 0,
+        feelsLike: 0,
+        temp: 0,
+        description: '',
+        id: 0,
+        main: '',
+        icon: ''
     }],
     week: [{
+        dt: 0,
         feelsLike: 0,
         tempMin: 0,
         tempMax: 0,
         description: "",
-        icon: "",
-        main: ""
+        id: 0,
+        main: "",
+        icon: ''
     }]
 }
 

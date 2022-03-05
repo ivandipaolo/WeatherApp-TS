@@ -1,33 +1,18 @@
 
-import { Types, ActionType } from '../types/types';
-import { Current, TwoDays, Week } from '../../interfaces/redux/WeatherInterface';
-import { ThunkAction, ThunkDispatch } from 'redux-thunk';
-import { AnyAction } from 'redux';
-// import { getWeatherCurrent, getWeatherTwoDays } from '../../helpers/weatherSearcher';
+import { Types } from '../types/types';
+import { ICurrentMapped, ITwoDaysMapped, IWeekMapped } from '../../interfaces/redux/WeatherInterface';
 
-export const startSetCurrentWeather = (lat: number, lng: number): ThunkAction<void, {}, {}, AnyAction> => async (
-    dispatch: ThunkDispatch<{}, {}, AnyAction>
-) => {
-    // const current = await getWeatherCurrent(lat, lng);
-    // const twoDays = await getWeatherTwoDays(lat,lng)
-    // const week = await getWeatherWeek(lat,lng)
-    // dispatch(setCurrentWeather(current));
-    // dispatch(setTwoDaysWeather(twoDays));
-    // dispatch(setWeekWeather(week));
-
-};
-
-export const setCurrentWeather = (data: Current) => ({
+export const setCurrentWeather = (data: ICurrentMapped) => ({
     type: Types.setCurrentWeather,
     payload: data
 });
 
-export const setTwoDaysWeather = (data: TwoDays) => ({
+export const setTwoDaysWeather = (data: ITwoDaysMapped[]) => ({
     type: Types.setTwoDaysWeather,
     payload: data
 });
 
-export const setWeekWeather = (data: Week) => ({
+export const setWeekWeather = (data: IWeekMapped[]) => ({
     type: Types.setWeekWeather,
     payload: data
 });

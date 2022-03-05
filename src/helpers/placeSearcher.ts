@@ -1,5 +1,5 @@
 import axios from "axios";
-import { place } from "../interfaces/components/PlacesInterface";
+import { IPlaceMapped, IPlace } from '../interfaces/components/PlacesInterface';
 
 const paramsMapbox = {
     'access_token': process.env.REACT_APP_MAPBOX_KEY,
@@ -14,7 +14,7 @@ export const findCity = async (place: string = '') => {
             `https://api.mapbox.com/geocoding/v5/mapbox.places/${place}.json`,
             { params: paramsMapbox }
         )
-        let array: place[] = resp.data.features.map((place: { id: string; place_name: string; center: number[]; }) => ({
+        let array: IPlaceMapped[] = resp.data.features.map((place: IPlace) => ({
             id: place.id,
             name: place.place_name,
             lng: place.center[0],
