@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Switch from 'react-switch';
 import { StyledThemeToggle } from './StyledThemeToggle';
 import { useDispatch, useSelector } from 'react-redux';
