@@ -6,6 +6,6 @@ export const StyledThemeToggle = styled.div`
     top: 6%;
     @media (max-width: 768px) {
         right: 38%;
-        top: 11%;
+        top: .7rem;
     }
 `

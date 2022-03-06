@@ -8,7 +8,7 @@ export const StyledSearchBox = styled.div`
     width: 100%;
   @media (max-width: 768px) {
     height: 7vh;
-    margin-top: 1rem;
+    margin-top: 4rem;
   }
 `;
 
@@ -27,7 +27,7 @@ export const StyledInput = styled.div`
     left: 26.5%;
     top: 2.5rem;
     @media (max-width: 768px) {
-      top: 1.5rem;
+      top: 4.4rem;
       left: 13%;
     }
   }
@@ -49,9 +49,12 @@ export const StyledInput = styled.div`
     }
     :focus{
       outline: none;
-      color: ${({ theme }) => theme.colors.typography.secondary};
-      background: white;
-      opacity: 0.5;
+      color: ${({ theme }) => theme.colors.typography.primary};
+      background: ${({ theme }) => theme.colors.background.color};
+      opacity: 0.85;
+      /* @media (max-width: 768px) {
+        opacity: 0.75;
+      } */
       border-bottom-right-radius: 0px;
       border-bottom-left-radius: 0px;
       ::-webkit-input-placeholder  {
@@ -60,28 +63,28 @@ export const StyledInput = styled.div`
       }
     }
   }
-`
+  `
 
 export const StyledSuggestions = styled.div`
   display: flex;
   flex-direction: column;
   position: absolute;
-  background: white;
+  background: ${({ theme }) => theme.colors.background.color};
   width: 50vw;  
-  @media (max-width: 768px) {
-    width: 82vw;  
-    top: 4.4rem;
-  }
   top: 5.6rem;
   border-bottom-right-radius: 15px;
   border-bottom-left-radius: 15px;
   overflow: hidden;
   z-index: 2;
-  opacity: 0.5;
+  opacity: 0.85;
+  @media (max-width: 768px) {
+    width: 82vw;  
+    top: 7.4rem;
+  }
 `;
 
 export const StyledSuggestion = styled.a`
-  color: ${({ theme }) => theme.colors.typography.secondary};
+  color: ${({ theme }) => theme.colors.typography.primary};
   font-family: ${({ theme }) => theme.fonts.primary};
   text-decoration: none;
   padding: 1rem 1rem;
@@ -91,6 +94,11 @@ export const StyledSuggestion = styled.a`
   position: relative;
   @media (max-width: 768px) {
     font-size: .9rem;
+    font-weight: 500;
+    text-align: center;
+    :not(:last-child){
+      border-bottom: 1px solid ${({ theme }) => theme.colors.typography.primary};
+    }
   }
   cursor: pointer;
   :after{
@@ -101,7 +109,7 @@ export const StyledSuggestion = styled.a`
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: #0087ca;
+    background-color: ${({ theme }) => theme.colors.typography.primary};
     transform-origin: bottom right;
     transition: transform 0.5s ease-out;
   }

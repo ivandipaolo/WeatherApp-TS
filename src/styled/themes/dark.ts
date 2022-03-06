@@ -18,7 +18,7 @@ export default {
         },
 
         background: {
-            color: '#fff'
+            color: '#0d0f40'
         },
 
         border: {
