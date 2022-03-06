@@ -7,13 +7,13 @@ export const StyledCurrentWeather = styled.div`
     align-items: center;
     flex-wrap: wrap;
     height: fit-content;
-    margin: 1rem 0% 1rem 0%;
+    margin: .5 0% .5rem 0%;
     color: ${({ theme }) => theme.colors.typography.primary};
     font-family: ${({ theme }) => theme.fonts.primary};
     @media (max-width: 768px) {
         gap: 2rem;
         margin-bottom: 0%;
-        margin-top: 3rem;
+        /* margin-top: 3rem; */
     }
     #info{
         position: relative;

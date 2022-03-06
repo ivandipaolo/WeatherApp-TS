@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from "../redux/store/store"
 import { ThemeToggle } from '../components/ThemeToggle/ThemeSwitch';
 import { ForecastSwitch } from '../components/ForecastSwitch/ForecastSwitch';
+import { Welcome } from '../components/Welcome/Welcome';
 
 export const Home = () => {
     const { selectedPlace } = useSelector((state: RootState) => state.placeInterface)
@@ -17,7 +18,7 @@ export const Home = () => {
             <ThemeToggle />
             {
                 selectedPlace.name !== ''
-                &&
+                ?
                 <>
                     <CurrentWeather />
                     <div>
@@ -29,6 +30,8 @@ export const Home = () => {
                         }
                     </div>
                 </>
+                :
+                <Welcome/>
             }
 
         </StyledHome >
