@@ -8,7 +8,7 @@ import {
 } from '../types/types';
 
 const initialState: UiInterface = {
-  themeMode:  ThemeModes.DARK,
+  themeMode:  ThemeModes.LIGHT,
   temperatureUnit: TemperatureUnit.CEL,
 };
 

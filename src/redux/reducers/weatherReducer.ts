@@ -13,7 +13,7 @@ const initialState: WeatherInterface = {
         humidity: 0,
         temp: 0,
         description: "",
-        id: 0,
+        id: 200,
         main: "",
         icon: ''
     },

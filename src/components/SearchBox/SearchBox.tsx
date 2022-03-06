@@ -30,7 +30,7 @@ export const SearchBox = () => {
         let places: IPlaceMapped[] = await findCity(search)
         setShowSuggestions(true)
         setSuggestions(places)
-      }, 250);
+      }, 150);
       return () => clearTimeout(timer)
     }
   }, [search])
@@ -40,7 +40,7 @@ export const SearchBox = () => {
       setSearch('')
       setShowSuggestions(false)
       setFocusedInput(false)
-    }, 300);
+    }, 200);
   }, [selectedPlace])
 
   const handleClick = (e: any) => {
@@ -55,7 +55,7 @@ export const SearchBox = () => {
     setTimeout(() => {
       setShowSuggestions(false)
       setFocusedInput(false)
-    }, 350);
+    }, 300);
   }
 
   const handleKeyDown = async (e: any) => {
@@ -75,7 +75,7 @@ export const SearchBox = () => {
       onBlur={handleBlur}
     >
       <StyledInput>
-        <IoSearchOutline id="searchIcon" size={35} color='black' />
+        <IoSearchOutline id="searchIcon" size={35} color='white' />
         <input
           type='text'
           value={search}

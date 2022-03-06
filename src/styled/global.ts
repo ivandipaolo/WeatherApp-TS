@@ -8,7 +8,8 @@ export default createGlobalStyle`
     }
     
     body {        
-        background-color: ${({ theme }) => theme.colors.background.color};
+        background-color: ${({ theme }) => theme.colors.gradientBackground.color};
+        background: ${({ theme }) => theme.colors.gradientBackground.background};
         font-family: ${({ theme }) => theme.fonts.primary};
         color: ${({ theme }) => theme.colors.typography.color};
     }

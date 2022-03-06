@@ -10,7 +10,12 @@ declare module 'styled-components' {
         },
 
         colors: {
-            gradient: {
+            gradientBackground: {
+                color: string,
+                background: string
+            },
+
+            placeholder: {
                 color: string
             },
 

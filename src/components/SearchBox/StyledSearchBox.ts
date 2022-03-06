@@ -5,6 +5,7 @@ export const StyledSearchBox = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    width: 100%;
 `;
 
 export const StyledInput = styled.div`
@@ -14,24 +15,31 @@ export const StyledInput = styled.div`
   width: 50vw;
   min-width: 50vw;
   margin: 2rem;
-    border-width: 1px;
-    border-color: #CCCCCC;
-    background-color: #FFFFFF;
-    color: #000000;
-    border-style: solid;
-    border-radius: 4px;
-    box-shadow: 0px 0px 7px rgba(66,66,66,.75);
   #searchIcon{
     position: absolute;
     z-index: 1;
-    left: 23%;
+    left: 26.5%;
     top: 2.5rem;
   }
   input{
-    width: 100%;
+    border-color: transparent;
     padding: .7rem;
-    padding-left: 3.5rem;
+    padding-left: 4rem;
+    background-color: transparent;
+    font-family: ${({ theme }) => theme.fonts.primary} ;
     font-size: 1.3rem;
+    width: 100%;
+    background: rgba( 255, 255, 255, 0.15 );
+    backdrop-filter: blur( 2px );
+    border-radius: 3rem;
+    color: ${({ theme }) => theme.colors.typography.color};
+    ::placeholder {
+    color:  ${({ theme }) => theme.colors.placeholder.color};
+    }
+    :focus{
+    outline: none;
+    color: ${({ theme }) => theme.colors.typography.color}
+    }
   }
 `
 

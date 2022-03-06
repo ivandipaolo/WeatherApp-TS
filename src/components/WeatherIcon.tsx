@@ -1,24 +1,31 @@
-import { FC, useState, useEffect } from 'react';
+import { FC, useState } from 'react';
 import { iconsProvider } from '../helpers/iconsProvider';
 import { StyledWeatherIcon } from './StyledWeatherIcon';
 
 interface Props {
     hour: number
-    id: keyof typeof iconsProvider.day
+    id: number
+    icon: string
 }
 
-export const WeatherIcon: FC<Props> = ({ hour, id }) => {
+export const WeatherIcon: FC<Props> = ({ hour, id, icon }) => {
     const [image, setImage] = useState()
     const { day, night } = iconsProvider
 
-    useEffect(() => {
-        if (hour > 6 && hour < 19 && id > 200) {
-            setImage(require(`../assets/weather/${day[id]}.svg`))
+    const time = icon.slice(-1)
+
+    setTimeout(() => {
+        if (time === 'n') {
+            setImage(require(`../assets/weather/${night[id as keyof typeof iconsProvider.day]}.svg`))
         } else {
-            setImage(require(`../assets/weather/${night[id]}.svg`))
+            setImage(require(`../assets/weather/${day[id as keyof typeof iconsProvider.day]}.svg`))
         }
-    }, [id])
+    }, 200);
+
+
     return (
-        <StyledWeatherIcon src={image && image} alt="" />
+        <>
+            <StyledWeatherIcon src={image} alt="" />
+        </>
     )
 }
