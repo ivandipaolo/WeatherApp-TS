@@ -29,7 +29,7 @@ export const StyledForecastedHour = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: ${({ theme }) => theme.colors.typography.color};
+    color: ${({ theme }) => theme.colors.typography.primary};
     font-family: ${({ theme }) => theme.fonts.primary};
     text-align: center;
     h4{

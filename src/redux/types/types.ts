@@ -3,6 +3,7 @@ export type ActionType = {
   payload: string;
 };
 
+
 export enum Types {
   /*
    *  UiInterface
@@ -19,6 +20,7 @@ export enum Types {
   setCurrentWeather = '[WT] Set current weather',
   setTwoDaysWeather = '[WT] Set two days weather',
   setWeekWeather = '[WT] Set week weather',
+  setForecast = "[WT] Set Forecast"
 }
 
 export enum ThemeModes {
@@ -30,4 +32,9 @@ export enum TemperatureUnit {
   FAR = '° F',
   CEL = '° C',
   KEL = '° K'
+}
+
+export enum ForecastMode {
+  DAYS = 'DAYS',
+  HOUR = 'HOUR'
 }

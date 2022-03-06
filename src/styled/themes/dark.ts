@@ -9,36 +9,38 @@ export default {
 
     colors: {
         gradientBackground: {
-            color: 'rgb(2, 0, 36)',
-            background: 'linear - gradient(28deg, rgba(2, 0, 36, 1) 11 %, rgba(7, 9, 55, 1) 44 %, rgba(33, 51, 146, 1) 85 %, rgba(62, 101, 251, 1) 96 %)',
+            background: 'linear-gradient(180deg, rgba(6,8,49,1) 14%, rgba(18,20,76,1) 42%, rgba(28,31,100,1) 95%)',
+            repeat: 'rgba(28,31,100,1)'
         },
         
         placeholder: {
             color: 'rgba(255, 255, 255, 0.5)'
         },
-        
+
         background: {
-            color: '#000'
+            color: '#fff'
         },
 
         border: {
             color: '#fff'
         },
 
-        button: {
-            color: '#182368'
+        switch: {
+            primary: '#83c2da',
+            secondary: '#0d0f40'
         },
 
         typography: {
-            color: '#0A28E5'
+            primary: '#fff',
+            secondary: '#000'
         },
 
         underline: {
-            color: '#ACB6F2'
+            color: '#fff'
         },
 
         inputs: {
-            color: '#ADADAD'
+            color: '#fff'
         }
     },
 

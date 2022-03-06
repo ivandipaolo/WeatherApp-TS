@@ -27,7 +27,7 @@ export const CurrentWeather: React.FC = () => {
       <div id='weather'>
         <p>Today</p>
         <div id='temperature'>
-          <WeatherIcon hour={date.hour()} id={id} icon={icon} />
+          <WeatherIcon id={id} icon={icon} size={100}/>
           <div>
             <h4><span>Feels-Like:</span> {kelvinToCelcius(feelsLike)}°</h4>
             <h5><span>Temperature:</span> {kelvinToCelcius(temp)}°</h5>

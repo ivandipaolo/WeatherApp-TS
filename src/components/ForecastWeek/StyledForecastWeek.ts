@@ -29,12 +29,18 @@ export const StyledForecastedDay = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: ${({ theme }) => theme.colors.typography.color};
+    color: ${({ theme }) => theme.colors.typography.primary};
     font-family: ${({ theme }) => theme.fonts.primary};
-    text-align: center;
+    text-align: center;   
+    @media (max-width: 768px) {
+        :not(:last-child){
+            border-bottom: 1px solid white;
+        }
+    }
     div{
         display: flex;
         flex-direction: row;
+        align-items: center;
         #temperatures{
             display: flex;
             flex-direction: column;

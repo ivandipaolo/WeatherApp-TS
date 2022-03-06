@@ -16,7 +16,7 @@ export const ForecastedHour: FC<Props> = ({ hour }) => {
     return (
         <StyledForecastedHour>
             <h4>{date.format('HH:00')}</h4>
-            <WeatherIcon hour={date.hour()} id={id} icon={icon} />
+            <WeatherIcon id={id} icon={icon} size={70}/>
             <h3>{kelvinToCelcius(hour.feelsLike)}°</h3>
         </StyledForecastedHour>
     )

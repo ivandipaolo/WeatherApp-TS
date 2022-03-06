@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import dayjs from 'dayjs';
-import { FaArrowDown, FaArrowUp } from 'react-icons/fa';
 import { IWeekMapped } from '../../interfaces/redux/WeatherInterface';
 import { kelvinToCelcius } from '../../helpers/unitConvertion';
 import { WeatherIcon } from '../WeatherIcon';
@@ -17,7 +16,7 @@ export const ForecastDay: FC<Props> = ({ day }) => {
         <StyledForecastedDay>
             <h3>{date.format('dddd')}</h3>
             <div>
-                <WeatherIcon hour={date.hour()} id={id} icon={icon} />
+                <WeatherIcon id={id} icon={icon} size={80}/>
                 <div id='temperatures'>
                     <h3>{kelvinToCelcius(day.tempMax)}</h3>
                     <h4>{kelvinToCelcius(day.tempMin)}</h4>

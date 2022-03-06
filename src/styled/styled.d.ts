@@ -11,8 +11,8 @@ declare module 'styled-components' {
 
         colors: {
             gradientBackground: {
-                color: string,
-                background: string
+                background: string,
+                repeat: string
             },
 
             placeholder: {
@@ -27,12 +27,14 @@ declare module 'styled-components' {
                 color: string
             },
 
-            button: {
-                color: string
+            switch: {
+                primary: string
+                secondary: string
             },
 
             typography: {
-                color: string
+                primary: string,
+                secondary: string
             },
 
             underline: {

@@ -1,14 +1,13 @@
 import { FC, useState } from 'react';
 import { iconsProvider } from '../helpers/iconsProvider';
-import { StyledWeatherIcon } from './StyledWeatherIcon';
 
 interface Props {
-    hour: number
     id: number
     icon: string
+    size: number
 }
 
-export const WeatherIcon: FC<Props> = ({ hour, id, icon }) => {
+export const WeatherIcon: FC<Props> = ({ id, icon, size}) => {
     const [image, setImage] = useState()
     const { day, night } = iconsProvider
 
@@ -24,8 +23,6 @@ export const WeatherIcon: FC<Props> = ({ hour, id, icon }) => {
 
 
     return (
-        <>
-            <StyledWeatherIcon src={image} alt="" />
-        </>
+            <img src={image} alt="" width={size} height={size}/>
     )
 }

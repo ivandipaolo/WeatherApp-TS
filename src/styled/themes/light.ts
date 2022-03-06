@@ -9,8 +9,8 @@ export default {
 
     colors: {
         gradientBackground: {
-            color: '#47C1FF',
-            background: 'linear-gradient(28deg, rgba(62,101,251,1) 14%, rgba(76,113,250,1) 44%, rgba(109,141,247,1) 76%',
+            background: 'linear-gradient(180deg, rgba(1,27,137,1) 10%, rgba(25,76,172,1) 46%, rgba(55,137,216,1) 85%)',
+            repeat: 'rgba(55,137,216,1)'
         },
 
         placeholder: {
@@ -25,12 +25,14 @@ export default {
             color: '#fff'
         },
 
-        button: {
-            color: '#fff'
+        switch: {
+            primary: '#0d0f40',
+            secondary: '#83c2da'
         },
 
         typography: {
-            color: '#fff'
+            primary: '#fff',
+            secondary: '#0087ca'
         },
 
         underline: {
