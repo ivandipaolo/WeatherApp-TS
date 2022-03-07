@@ -58,7 +58,7 @@ export const Welcome = () => {
                         <StyledCurrentWeather>
                             <div id='info'>
                                 <div>
-                                    <h1>Your current weather is:</h1>
+                                    <h1>Curent Location</h1>
                                     <p>{date.format('MMM, dddd YYYY')}</p>
                                 </div>
                                 <h3>{date.format('HH:mm')}</h3>
@@ -66,13 +66,15 @@ export const Welcome = () => {
                             <div id='weather'>
                                 <p>Today</p>
                                 <div id='temperature'>
-                                    <WeatherIcon id={id} icon={icon} size={100} />
+                                    <div>
+                                        <WeatherIcon id={id} icon={icon} size={100} />
+                                        <h5>{main}</h5>
+                                    </div>
                                     <div>
                                         <h4><span>Feels-Like:</span> {kelvinToCelcius(feelsLike)}°</h4>
                                         <h5><span>Temperature:</span> {kelvinToCelcius(temp)}°</h5>
                                     </div>
                                 </div>
-                                <h5>{main}</h5>
                             </div>
                         </StyledCurrentWeather>
                         <div>

@@ -5,6 +5,10 @@ export const StyledForecastWeek = styled.div`
     flex-wrap: wrap;
     margin: 3rem 10vw 2rem 10vw;
     justify-content: center;
+    gap: 2rem;
+    @media (max-width: 768px) {
+        gap: 0%;
+    }
     ::-webkit-scrollbar{
         height: 7px;
         width: 2px;
@@ -41,6 +45,13 @@ export const StyledForecastedDay = styled.div`
         display: flex;
         flex-direction: row;
         align-items: center;
+        #icon{
+            flex-direction: column;
+            h5{
+                font-weight: 500;
+                text-align: center;
+            }
+        }
         #temperatures{
             display: flex;
             flex-direction: column;
@@ -48,8 +59,5 @@ export const StyledForecastedDay = styled.div`
     }
     h4{
         font-weight: 400;
-    }
-    h5{
-        font-weight: 500;
     }
 `

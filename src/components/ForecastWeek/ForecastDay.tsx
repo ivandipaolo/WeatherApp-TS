@@ -16,13 +16,15 @@ export const ForecastDay: FC<Props> = ({ day }) => {
         <StyledForecastedDay>
             <h3>{date.format('dddd')}</h3>
             <div>
-                <WeatherIcon id={id} icon={icon} size={80}/>
+                <div id="icon">
+                    <WeatherIcon id={id} icon={icon} size={80} />
+                    <h5>{main}</h5>
+                </div>
                 <div id='temperatures'>
                     <h3>{kelvinToCelcius(day.tempMax)}</h3>
                     <h4>{kelvinToCelcius(day.tempMin)}</h4>
                 </div>
             </div>
-            <h5>{main}</h5>
         </StyledForecastedDay>
     )
 }

@@ -2,30 +2,31 @@ import styled from 'styled-components';
 
 export const StyledCurrentWeather = styled.div`
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     height: fit-content;
     margin: .5 0% .5rem 0%;
     color: ${({ theme }) => theme.colors.typography.primary};
     font-family: ${({ theme }) => theme.fonts.primary};
+    gap: 2rem;
     @media (max-width: 768px) {
         gap: 2rem;
         margin-bottom: 0%;
-        /* margin-top: 3rem; */
+        margin-top: 2rem;
     }
     #info{
         position: relative;
         display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 7rem;
+        flex-direction: row;
+        align-items: center;
+        gap: 3rem;
         @media (max-width: 768px) {
             gap: 1.5rem;
             flex-direction: row;
             align-items: center;
-            margin: 0 1rem 0 1rem
+            margin: 0 1.5rem 0 1.5rem
         }
         div{
             h1{
@@ -80,7 +81,7 @@ export const StyledCurrentWeather = styled.div`
             text-align: center;
             }
             div{
-                margin-right:2rem ;
+                margin-right: 0rem;
                 @media (max-width: 768px) {
                     margin-right: 0%;
                     align-items:center ;
@@ -100,17 +101,18 @@ export const StyledCurrentWeather = styled.div`
                     }
                 }
                 h5{
+                    font-weight: 400;
+                    font-size: 1.2rem;
+                    text-align: center;
+                    @media (max-width: 768px) {
+                            font-size: 1.5rem;
+                    }
                     span{
                         font-weight: 400;
                         font-size: 1.2rem;
                         @media (max-width: 768px) {
                             font-size: 1rem;
                         }
-                    }
-                    font-weight: 400;
-                    font-size: 1.5rem;
-                    @media (max-width: 768px) {
-                            font-size: 1.2rem;
                     }
                 }
             }
