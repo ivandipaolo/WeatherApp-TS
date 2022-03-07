@@ -38,6 +38,7 @@ export const Welcome = () => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(handleSuccess, handleError);
         }
+        // eslint-disable-next-line
     }, [])
 
     return (
@@ -75,7 +76,7 @@ export const Welcome = () => {
                         </StyledMessage>
                         :
                         <StyledMessage>
-                            <img src={locationIcon} />
+                            <img src={locationIcon} alt='locationIcon' />
                             <h1>Please, let us have access to your current possition in order to show you your current weather.</h1>
                         </StyledMessage>
             }
