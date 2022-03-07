@@ -3,19 +3,25 @@ import { useSelector, useDispatch } from 'react-redux';
 import dayjs from 'dayjs';
 import { RootState } from '../../redux/store/store';
 
-import { StyledMessage, StyledWelcome } from './StyledWelcome';
+import { StyledMessage } from './StyledWelcome';
 import { WeatherIcon } from '../WeatherIcon';
 import { kelvinToCelcius } from '../../helpers/unitConvertion';
 import { getWeather } from '../../helpers/weatherSearcher';
-import { setCurrentWeather } from '../../redux/actions/weatherActions';
+import { setCurrentWeather, setWeekWeather, setTwoDaysWeather } from '../../redux/actions/weatherActions';
 
 import locationIcon from '../../assets/locationIcon.png';
+import { ForecastSwitch } from '../ForecastSwitch/ForecastSwitch';
+import { ForecastWeek } from '../ForecastWeek/ForecastWeek';
+import { ForecastTwoDays } from '../ForecastTwoDays/ForecastTwoDays';
+import { StyledCurrentWeather } from '../CurrentWeather/StyledCurrentWeather';
 
 export const Welcome = () => {
     const [location, setLocation] = useState<boolean>()
     const [error, setError] = useState<string>()
 
     const { current } = useSelector((state: RootState) => state.WeatherInterface)
+    const { forecast } = useSelector((state: RootState) => state.uiInterface)
+
     const { dt, feelsLike, temp, main, id, icon } = current;
     const date = dayjs(new Date(dt * 1000))
 
@@ -27,6 +33,8 @@ export const Welcome = () => {
         const weather = await getWeather(latitude, longitude);
         if (weather) {
             dispatch(setCurrentWeather(weather.current));
+            dispatch(setWeekWeather(weather.week));
+            dispatch(setTwoDaysWeather(weather.twoDays));
         }
     };
 
@@ -46,28 +54,36 @@ export const Welcome = () => {
             {
                 location
                     ?
-                    <StyledWelcome>
-                        <div id='info'>
-                            <div>
-                                <h1>Your current weather is:</h1>
-                            </div>
-                        </div>
-                        <div id='weather'>
-                            <p>Today</p>
-                            <div id='temperature'>
-                                <WeatherIcon id={id} icon={icon} size={150} />
+                    <>
+                        <StyledCurrentWeather>
+                            <div id='info'>
                                 <div>
-                                    <h4><span>Feels-Like:</span> {kelvinToCelcius(feelsLike)}°</h4>
-                                    <h5><span>Temperature:</span> {kelvinToCelcius(temp)}°</h5>
+                                    <h1>Your current weather is:</h1>
+                                    <p>{date.format('MMM, dddd YYYY')}</p>
                                 </div>
+                                <h3>{date.format('HH:mm')}</h3>
                             </div>
-                            <h5>{main}</h5>
+                            <div id='weather'>
+                                <p>Today</p>
+                                <div id='temperature'>
+                                    <WeatherIcon id={id} icon={icon} size={100} />
+                                    <div>
+                                        <h4><span>Feels-Like:</span> {kelvinToCelcius(feelsLike)}°</h4>
+                                        <h5><span>Temperature:</span> {kelvinToCelcius(temp)}°</h5>
+                                    </div>
+                                </div>
+                                <h5>{main}</h5>
+                            </div>
+                        </StyledCurrentWeather>
+                        <div>
+                            <ForecastSwitch />
+                            {
+                                forecast === 'DAYS'
+                                    ? <ForecastWeek />
+                                    : <ForecastTwoDays />
+                            }
                         </div>
-                        <div id="date">
-                            <p>{date.format('MMM, dddd YYYY')}</p>
-                            <h3>{date.format('HH:mm')}</h3>
-                        </div>
-                    </StyledWelcome >
+                    </>
                     : error
                         ?
                         <StyledMessage>
