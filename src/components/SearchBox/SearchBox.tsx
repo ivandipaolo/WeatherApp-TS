@@ -1,16 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { RootState } from '../../redux/store/store';
 import { useSelector, useDispatch } from 'react-redux';
 import { IoSearchOutline } from 'react-icons/io5';
 
 import { IPlaceMapped } from '../../interfaces/components/PlacesInterface';
 
+import { StyledSearchBox, StyledInput, StyledSuggestions } from './StyledSearchBox';
 import Suggestion from './Suggestion';
 import { findCity } from '../../helpers/placeSearcher';
 import { getWeather } from '../../helpers/weatherSearcher';
-import { setCurrentWeather, setWeekWeather, setTwoDaysWeather } from '../../redux/actions/weatherActions';
+import useOnClickOutside from '../../helpers/hooks/useOnClickOutside';
 import { setSelectedPlace } from '../../redux/actions/placeActions';
-import { StyledSearchBox, StyledInput, StyledSuggestions } from './StyledSearchBox';
+import { setCurrentWeather, setWeekWeather, setTwoDaysWeather } from '../../redux/actions/weatherActions';
 
 export const SearchBox = () => {
 
@@ -22,6 +23,8 @@ export const SearchBox = () => {
   const [suggestions, setSuggestions] = useState<IPlaceMapped[]>([])
   const [focusedInput, setFocusedInput] = useState<boolean>(false)
   const [showSuggestions, setShowSuggestions] = useState<boolean>(false)
+
+  const boxRef = useRef(null)
 
   useEffect(() => {
     if (search.trim() !== '') {
@@ -51,15 +54,13 @@ export const SearchBox = () => {
     }
   };
 
-  const handleBlur = (): void => {
-    setTimeout(() => {
-      setShowSuggestions(false)
-      setFocusedInput(false)
-    }, 300);
+  const handleClickOutside = (): void => {
+    setShowSuggestions(false)
+    setFocusedInput(false)
   }
 
   const handleKeyDown = async (e: any) => {
-    if (e.key === 'Enter' && suggestions.length > 0) {
+    if (e.key === 'Enter') {
       dispatch(setSelectedPlace(suggestions[0]));
       const weather = await getWeather(suggestions[0].lat, suggestions[0].lng);
       if (weather) {
@@ -70,11 +71,14 @@ export const SearchBox = () => {
     }
   }
 
+  useOnClickOutside(boxRef, handleClickOutside)
+
   return (
     <StyledSearchBox
-      onBlur={handleBlur}
     >
-      <StyledInput>
+      <StyledInput
+        ref={boxRef}
+      >
         <IoSearchOutline id="searchIcon" size={35} color='white' />
         <input
           type='text'
@@ -85,16 +89,21 @@ export const SearchBox = () => {
           onKeyDown={e => handleKeyDown(e)}
           autoComplete="off"
           placeholder={selectedPlace.name !== '' ? selectedPlace.name : 'Search for a place here'}
+          tabIndex={1}
         />
       </StyledInput>
       {showSuggestions &&
-        <StyledSuggestions>
+        <StyledSuggestions
+          ref={boxRef}
+        >
           {
-            suggestions.map((sugg
-            ) => (
+            suggestions.map((sugg, index) => (
               <Suggestion
                 key={sugg.id}
                 suggestion={sugg}
+                // ref={boxRef}
+                handleClickOutside={handleClickOutside}
+                index={index+2}
               />
             ))
           }

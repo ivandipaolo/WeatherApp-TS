@@ -1,12 +1,13 @@
 import { useState } from 'react';
-import Switch from 'react-switch';
-import { StyledThemeToggle } from './StyledThemeToggle';
+import { RootState } from '../../redux/store/store';
 import { useDispatch, useSelector } from 'react-redux';
-import { setThemeMode } from '../../redux/actions/uiActions';
+import Switch from 'react-switch';
+
+import { StyledThemeToggle } from './StyledThemeToggle';
 import { WeatherIcon } from '../WeatherIcon';
+import { setThemeMode } from '../../redux/actions/uiActions';
 import dark from '../../styled/themes/dark'
 import light from '../../styled/themes/light'
-import { RootState } from '../../redux/store/store';
 
 
 export const ThemeToggle = () => {
@@ -22,11 +23,10 @@ export const ThemeToggle = () => {
       : dispatch(setThemeMode('DARK'))
   }
 
-
-
   return (
-    <StyledThemeToggle>
+    <StyledThemeToggle >
       <Switch
+        tabIndex={6}
         onChange={handleCheck}
         checked={checked}
         height={40}

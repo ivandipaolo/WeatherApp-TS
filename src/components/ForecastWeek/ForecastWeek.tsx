@@ -1,9 +1,10 @@
-import React from 'react'
-import { StyledForecastWeek } from './StyledForecastWeek';
 import { RootState } from '../../redux/store/store';
 import { useSelector } from 'react-redux';
+
 import { IWeekMapped } from '../../interfaces/redux/WeatherInterface';
 import { ForecastDay } from './ForecastDay';
+import { StyledForecastWeek } from './StyledForecastWeek';
+
 export const ForecastWeek = () => {
 
   const { week } = useSelector((state: RootState) => state.WeatherInterface)

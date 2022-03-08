@@ -6,7 +6,6 @@ export const StyledHome = styled.div`
     flex-direction: column;
     @media (max-width: 768px) {           
         gap: .5rem;
-        margin-bottom: 1rem;
     }
     hr{
         margin: 0 auto 0 auto;

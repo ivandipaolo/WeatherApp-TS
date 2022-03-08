@@ -26,6 +26,7 @@ export const ForecastSwitch = () => {
         <div id='switch'>
             <span id='forecast'>Forecast of the next</span>
             <Switch
+                tabIndex={7}
                 onChange={handleCheck}
                 checked={checked}
                 height={40}
