@@ -10,8 +10,10 @@ import { ForecastSwitch } from '../components/ForecastSwitch/ForecastSwitch';
 import { Welcome } from '../components/Welcome/Welcome';
 
 export const Home = () => {
+
     const { selectedPlace } = useSelector((state: RootState) => state.placeInterface)
     const { forecast } = useSelector((state: RootState) => state.uiInterface)
+    
     return (
         <StyledHome>
             <SearchBox />

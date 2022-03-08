@@ -1,10 +1,11 @@
+import { useDispatch } from 'react-redux';
+
 import { StyledSuggestion } from './StyledSearchBox';
 import { IPlaceMapped } from '../../interfaces/components/PlacesInterface';
-import { useDispatch } from 'react-redux';
+
 import { getWeather } from '../../helpers/weatherSearcher';
 import { setSelectedPlace } from '../../redux/actions/placeActions';
 import { setCurrentWeather, setWeekWeather, setTwoDaysWeather } from '../../redux/actions/weatherActions';
-import { MutableRefObject } from 'react';
 
 interface Props {
     suggestion: IPlaceMapped;

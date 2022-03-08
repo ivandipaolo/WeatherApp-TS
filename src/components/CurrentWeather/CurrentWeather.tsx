@@ -1,8 +1,9 @@
 import { useSelector } from 'react-redux';
-import { StyledCurrentWeather } from './StyledCurrentWeather';
 import { RootState } from '../../redux/store/store';
-import { kelvinToCelcius } from '../../helpers/unitConvertion';
 import dayjs from 'dayjs';
+
+import { StyledCurrentWeather } from './StyledCurrentWeather';
+import { kelvinToCelcius } from '../../helpers/unitConvertion';
 import { WeatherIcon } from '../WeatherIcon';
 
 export const CurrentWeather: React.FC = () => {

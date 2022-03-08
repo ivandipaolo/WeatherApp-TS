@@ -1,10 +1,10 @@
 import { FC, useEffect, useState } from 'react';
+import dayjs from 'dayjs';
 
-import { StyledForecastedHour } from './StyledForecastTwoDays';
+import { WeatherIcon } from '../WeatherIcon';
 import { ITwoDaysMapped } from '../../interfaces/redux/WeatherInterface';
 import { kelvinToCelcius } from '../../helpers/unitConvertion';
-import dayjs from 'dayjs';
-import { WeatherIcon } from '../WeatherIcon';
+import { StyledForecastedHour } from './StyledForecastTwoDays';
 
 interface Props {
     hour: ITwoDaysMapped

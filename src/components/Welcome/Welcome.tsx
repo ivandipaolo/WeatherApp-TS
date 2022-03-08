@@ -1,19 +1,20 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import dayjs from 'dayjs';
 import { RootState } from '../../redux/store/store';
+import dayjs from 'dayjs';
+import locationIcon from '../../assets/locationIcon.png';
 
-import { StyledMessage } from './StyledWelcome';
-import { WeatherIcon } from '../WeatherIcon';
 import { kelvinToCelcius } from '../../helpers/unitConvertion';
 import { getWeather } from '../../helpers/weatherSearcher';
 import { setCurrentWeather, setWeekWeather, setTwoDaysWeather } from '../../redux/actions/weatherActions';
 
-import locationIcon from '../../assets/locationIcon.png';
+import { StyledMessage } from './StyledWelcome';
+import { StyledCurrentWeather } from '../CurrentWeather/StyledCurrentWeather';
+
+import { WeatherIcon } from '../WeatherIcon';
 import { ForecastSwitch } from '../ForecastSwitch/ForecastSwitch';
 import { ForecastWeek } from '../ForecastWeek/ForecastWeek';
 import { ForecastTwoDays } from '../ForecastTwoDays/ForecastTwoDays';
-import { StyledCurrentWeather } from '../CurrentWeather/StyledCurrentWeather';
 
 export const Welcome = () => {
     const [location, setLocation] = useState<boolean>()

@@ -1,7 +1,8 @@
 import { FC } from 'react';
 import dayjs from 'dayjs';
-import { IWeekMapped } from '../../interfaces/redux/WeatherInterface';
+
 import { kelvinToCelcius } from '../../helpers/unitConvertion';
+import { IWeekMapped } from '../../interfaces/redux/WeatherInterface';
 import { WeatherIcon } from '../WeatherIcon';
 import { StyledForecastedDay } from './StyledForecastWeek';
 

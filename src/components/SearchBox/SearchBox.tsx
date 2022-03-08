@@ -5,13 +5,13 @@ import { IoSearchOutline } from 'react-icons/io5';
 
 import { IPlaceMapped } from '../../interfaces/components/PlacesInterface';
 
+import { StyledSearchBox, StyledInput, StyledSuggestions } from './StyledSearchBox';
 import Suggestion from './Suggestion';
 import { findCity } from '../../helpers/placeSearcher';
 import { getWeather } from '../../helpers/weatherSearcher';
-import { setCurrentWeather, setWeekWeather, setTwoDaysWeather } from '../../redux/actions/weatherActions';
-import { setSelectedPlace } from '../../redux/actions/placeActions';
-import { StyledSearchBox, StyledInput, StyledSuggestions } from './StyledSearchBox';
 import useOnClickOutside from '../../helpers/hooks/useOnClickOutside';
+import { setSelectedPlace } from '../../redux/actions/placeActions';
+import { setCurrentWeather, setWeekWeather, setTwoDaysWeather } from '../../redux/actions/weatherActions';
 
 export const SearchBox = () => {
 

@@ -1,11 +1,9 @@
-import React from 'react'
-import { StyledForecastTwoDays } from './StyledForecastTwoDays'
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store/store';
+
 import { ForecastedHour } from './ForecastedHour';
 import { ITwoDaysMapped } from '../../interfaces/redux/WeatherInterface';
-import dayjs from 'dayjs';
-import { useState } from 'react';
+import { StyledForecastTwoDays } from './StyledForecastTwoDays'
 
 export const ForecastTwoDays = () => {
 

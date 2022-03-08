@@ -7,7 +7,6 @@ const paramsMapbox = {
     'language': 'en'
 }
 
-
 export const findCity = async (place: string = '') => {
     try {
         const resp = await axios.get(
