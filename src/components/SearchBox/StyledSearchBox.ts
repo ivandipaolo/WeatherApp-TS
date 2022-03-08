@@ -52,9 +52,6 @@ export const StyledInput = styled.div`
       color: ${({ theme }) => theme.colors.typography.primary};
       background: ${({ theme }) => theme.colors.background.color};
       opacity: 0.85;
-      /* @media (max-width: 768px) {
-        opacity: 0.75;
-      } */
       border-bottom-right-radius: 0px;
       border-bottom-left-radius: 0px;
       ::-webkit-input-placeholder  {
@@ -113,8 +110,9 @@ export const StyledSuggestion = styled.a`
     transform-origin: bottom right;
     transition: transform 0.5s ease-out;
   }
-  :hover:after {
+  :hover:after, :focus:after {
     transform: scaleX(1);
     transform-origin: bottom left;
+    outline: none;
   }
 `

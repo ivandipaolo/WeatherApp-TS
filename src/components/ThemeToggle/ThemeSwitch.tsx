@@ -25,8 +25,9 @@ export const ThemeToggle = () => {
 
 
   return (
-    <StyledThemeToggle>
+    <StyledThemeToggle >
       <Switch
+        tabIndex={6}
         onChange={handleCheck}
         checked={checked}
         height={40}

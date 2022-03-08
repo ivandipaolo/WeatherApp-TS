@@ -2,10 +2,10 @@ import styled from "styled-components";
 
 export const StyledForecastTwoDays = styled.div`
     display: flex ;
+    margin: 3rem 10vw;
     @media (min-width: 768px) {
         overflow: auto;
         scroll-snap-type: x mandatory;
-        margin: 3rem 10vw 2rem 10vw;
         ::-webkit-scrollbar{
             height: 7px;
             width: 2px;
@@ -17,9 +17,9 @@ export const StyledForecastTwoDays = styled.div`
         }
     }
     @media (max-width: 768px) {
-        flex-direction: rowz;
+        flex-direction: row;
         flex-wrap: wrap;
-        margin: 3rem 0 2rem 0;
+        flex-grow: 1;
         justify-content: center;
         gap: 0%;
     }
@@ -32,8 +32,9 @@ export const StyledForecastTwoDays = styled.div`
 `
 
 export const StyledForecastedHour = styled.div`
+    position: relative;
     scroll-snap-align: start;
-    padding: 1rem;
+    padding: 1.2rem 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -46,5 +47,14 @@ export const StyledForecastedHour = styled.div`
     }
     h5{
         font-weight: 500;
+    }
+    @media (max-width: 768px) {
+        border-bottom: 1px solid white;
+    }
+    p{
+        position: absolute;
+        z-index: 1;
+        font-weight: 700;
+        top: 0px
     }
 `

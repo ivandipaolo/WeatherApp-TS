@@ -19,7 +19,7 @@ export const WeatherIcon: FC<Props> = ({ id, icon, size}) => {
         } else {
             setImage(require(`../assets/weather/${day[id as keyof typeof iconsProvider.day]}.svg`))
         }
-    }, 200);
+    }, 100);
 
 
     return (
