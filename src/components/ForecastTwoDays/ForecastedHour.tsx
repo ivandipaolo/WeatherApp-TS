@@ -24,7 +24,7 @@ export const ForecastedHour: FC<Props> = ({ hour }) => {
         } else {
             setNewDay(false)
         }
-    }, [])
+    }, [date, today])
 
 
     return (
