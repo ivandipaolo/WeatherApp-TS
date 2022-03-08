@@ -24,10 +24,8 @@ export const ForecastedHour: FC<Props> = ({ hour }) => {
         } else {
             setNewDay(false)
         }
-        
         // eslint-disable-next-line
     }, [date])
-
 
     return (
         <StyledForecastedHour>
