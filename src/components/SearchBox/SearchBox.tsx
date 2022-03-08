@@ -43,7 +43,7 @@ export const SearchBox = () => {
       setSearch('')
       setShowSuggestions(false)
       setFocusedInput(false)
-    }, 200);
+    }, 50);
   }, [selectedPlace])
 
   const handleClick = (e: any) => {
@@ -74,10 +74,10 @@ export const SearchBox = () => {
   useOnClickOutside(boxRef, handleClickOutside)
 
   return (
-    <StyledSearchBox
-    >
+    <StyledSearchBox>
       <StyledInput
         ref={boxRef}
+        active={showSuggestions}
       >
         <IoSearchOutline id="searchIcon" size={35} color='white' />
         <input
@@ -103,7 +103,7 @@ export const SearchBox = () => {
                 suggestion={sugg}
                 // ref={boxRef}
                 handleClickOutside={handleClickOutside}
-                index={index+2}
+                index={index + 2}
               />
             ))
           }

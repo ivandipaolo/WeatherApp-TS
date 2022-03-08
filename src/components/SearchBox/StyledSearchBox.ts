@@ -12,7 +12,7 @@ export const StyledSearchBox = styled.div`
   }
 `;
 
-export const StyledInput = styled.div`
+export const StyledInput = styled.div<{ active: boolean }> `
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,12 +48,15 @@ export const StyledInput = styled.div`
       color:  ${({ theme }) => theme.colors.placeholder.color};
     }
     :focus{
-      outline: none;
-      color: ${({ theme }) => theme.colors.typography.primary};
-      background: ${({ theme }) => theme.colors.background.color};
-      opacity: 0.85;
-      border-bottom-right-radius: 0px;
-      border-bottom-left-radius: 0px;
+      ${({ active }) => active && `
+        background: blue;
+        outline: none;
+        opacity: 0.85;
+        border-bottom-right-radius: 0px;
+        border-bottom-left-radius: 0px;
+        `}
+        color: ${({ theme }: any) => theme.colors.typography.primary};
+        background: ${({ theme }: any) => theme.colors.background.color};
       ::-webkit-input-placeholder  {
         color: grey;
         transition: 1s ease-in-out;

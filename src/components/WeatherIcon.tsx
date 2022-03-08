@@ -1,5 +1,6 @@
 import { FC, useState } from 'react';
 import { iconsProvider } from '../helpers/iconsProvider';
+import { Loader } from './Loader/Loader';
 
 interface Props {
     id: number
@@ -7,7 +8,7 @@ interface Props {
     size: number
 }
 
-export const WeatherIcon: FC<Props> = ({ id, icon, size}) => {
+export const WeatherIcon: FC<Props> = ({ id, icon, size }) => {
     const [image, setImage] = useState()
     const { day, night } = iconsProvider
 
@@ -19,10 +20,12 @@ export const WeatherIcon: FC<Props> = ({ id, icon, size}) => {
         } else {
             setImage(require(`../assets/weather/${day[id as keyof typeof iconsProvider.day]}.svg`))
         }
-    }, 100);
+    }, 300);
 
 
     return (
-            <img src={image} alt="" width={size} height={size}/>
+        image
+            ? <img src={image} alt="" width={size} height={size} />
+            : <Loader />
     )
 }
