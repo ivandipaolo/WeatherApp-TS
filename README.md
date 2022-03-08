@@ -2,9 +2,9 @@
 🌞 WeatherApp - React + TS 🌧
 </h1>
 
-## Versión en vivo [Acá](https://affectionate-leakey-88f159.netlify.app/)
+## Versión en vivo [Aqui](https://affectionate-leakey-88f159.netlify.app/)
 
-### Principales tecnologías-paquetes utilizad@s:
+## Principales tecnologías-paquetes utilizad@s:
 1. React + TypeScript.
 2. Styled-Components para estilado general.
 3. Redux para el control de estados.
@@ -14,9 +14,9 @@
 
 ## Gif de la aplicación desktop y mobile:
 
-![Giphy](https://media.giphy.com/media/gbF13Xmr4HVx82Py7k/giphy.gif)
+![Giphy](https://media.giphy.com/media/gXvbG8vEThZ6qinN8k/giphy.gif)
 
-![Giphy](https://media.giphy.com/media/ntqJltbcpa9H9uIPFM/giphy.gif)
+![Giphy](https://media.giphy.com/media/sh4C22BOnYLs4jSVVM/giphy.gif)
 
 ## APIs utilizadas:
 
@@ -55,6 +55,9 @@ my-app/
         ForecastDay.tsx
         ForecastWeek.tsx
         StyledForecastWeek.ts
+      Loader/
+        Loader.tsx
+        StyledLoader.ts
       SearchBox/
         SearchBox.tsx
         StyledSearchBox.ts
@@ -134,6 +137,7 @@ my-app/
       ForecastSwitch/
       ForecastTwoDays/
       ForecastWeek/
+      Loader/
       SearchBox/
       ThemeToggle/
       Welcome/
@@ -158,17 +162,17 @@ my-app/
 
 ## Modo de ejecución:
 ```
-git clone https://github.com/IvanAriDiPaolo/meteologica-prueba-front.git
+git clone https://github.com/IvanAriDiPaolo/WeatherApp-TS.git
 ```
-luego
+luego instalamos las dependencias
 ```
 yarn install
 ```
-y finalmente:
+y finalmente lo ejecutamos:
 ```
 yarn start
 ```
-Para visualizar la app:
+Para visualizar la app visitar:
 ```
 http://localhost:3000/
 ```
