@@ -176,3 +176,13 @@ Para visualizar la app visitar:
 ```
 http://localhost:3000/
 ```
+
+## En caso de querer hacer un deploy:
+```
+git clone https://github.com/IvanAriDiPaolo/WeatherApp-TS.git
+```
+luego creamos la build
+```
+yarn build
+```
+y finalmente publicam la capeta build en su hosting de preferencia.
